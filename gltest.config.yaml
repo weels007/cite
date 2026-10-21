@@ -1,0 +1,27 @@
+# gltest configuration for the Cite project.
+#
+# The networks are preconfigured by genlayer-py; anything set here is merged
+# on top of the defaults.
+paths:
+  contracts: contracts
+  artifacts: artifacts
+
+networks:
+  default: localnet
+
+  # `glsim --port 4000 --validators 5` or `genlayer up`
+  localnet:
+    url: http://127.0.0.1:4000/api
+
+  # Hosted Studio, gasless (a 0 GEN balance is fine).
+  studionet:
+    url: https://studio.genlayer.com/api
+
+  # Testnet Bradbury needs funded accounts. Put the private keys in a .env
+  # file (see .env.example) and uncomment this block:
+  #
+  # testnet_bradbury:
+  #   url: https://rpc-bradbury.genlayer.com
+  #   accounts:
+  #     - "${ACCOUNT_PRIVATE_KEY_1}"
+  #     - "${ACCOUNT_PRIVATE_KEY_2}"

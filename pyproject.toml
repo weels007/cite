@@ -1,0 +1,20 @@
+[project]
+name = "cite"
+version = "0.1.0"
+description = "Cite: prediction markets on GenLayer, settled by cited evidence"
+requires-python = ">=3.12"
+dependencies = [
+    "genlayer-test>=0.29.0",
+    "genvm-linter>=0.11.0",
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/direct"]
+python_files = ["test_*.py"]
+markers = [
+    "slow: long running test, excluded by default",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]

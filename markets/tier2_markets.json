@@ -1,0 +1,223 @@
+{
+  "$comment": "Tier 2 markets. The weather is measurable, the consequence is a judgement. GDACS is the European Commission Joint Research Centre's global disaster registry: it answers a date range, an event type and a country with GeoJSON, and every record carries an alert level, the affected countries and a numeric severity. Because the feed is structured, the contract counts the qualifying records itself and the model only has to quote the record it relied on. The MeteoAlarm feeds are the European weather alerting network in CAP format. The feed retention is short, so the resolution deadline has to be close to the event.",
+  "markets": [
+    {
+      "id": "t2-gdacs-floods-indonesia-2026-12",
+      "shape": "metric",
+      "question": "Will GDACS record at least 1 flood event affecting Indonesia in December 2026?",
+      "criteria": "Count the records in the Global Disaster Alert and Coordination System that report a flood, that list Indonesia among the countries they affected, and that are orange or red. Resolve Yes if the count is at least 1.",
+      "outcomes": ["Yes", "No"],
+      "source_urls": [],
+      "event_urls": [
+        "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?fromDate=2026-12-01&toDate=2026-12-31&eventType=FL"
+      ],
+      "event_domains": ["gdacs.org"],
+      "allowed_domains": [],
+      "close_at": "2026-11-25T09:00:00Z",
+      "resolution_deadline_at": "2027-01-05T00:00:00Z",
+      "challenge_window": 172800,
+      "resolution_mode": "metric",
+      "comparator": ">=",
+      "threshold": 1,
+      "metric_name": "number of orange or red flood events affecting Indonesia",
+      "window_start_at": "2026-12-01T00:00:00Z",
+      "window_end_at": "2026-12-31T23:59:59Z",
+      "require_citation": true,
+      "measurement": {
+        "primary_source": 1,
+        "scale": 1,
+        "metric_source": "event",
+        "station": "not applicable, this market measures the GDACS global disaster registry",
+        "variable": "the number of qualifying disaster records",
+        "unit": "count",
+        "day_boundary": "the from and to dates of the record",
+        "missing_data": "the market is voided if the registry answers with nothing at all",
+        "match_terms": ["2026-12"],
+        "event": {
+          "publisher": "GDACS, the Joint Research Centre of the European Commission",
+          "area": "Indonesia",
+          "criteria": "a record counts when it is a flood, when it lists Indonesia among the affected countries and when its alert level is orange or red",
+          "require_citation": true,
+          "match_terms": ["2026-12"],
+          "count_rules": {
+            "eventtype": ["FL"],
+            "alertlevel": ["Orange", "Red"],
+            "affected_iso3": ["IDN"]
+          }
+        }
+      }
+    },
+    {
+      "id": "t2-gdacs-severe-any-indonesia-2026-12",
+      "shape": "metric",
+      "question": "Will GDACS record at least 3 orange or red disaster events affecting Indonesia in December 2026?",
+      "criteria": "Count the records in the Global Disaster Alert and Coordination System that list Indonesia among the countries they affected and that are orange or red, whatever their type. Resolve Yes if the count is at least 3.",
+      "outcomes": ["Yes", "No"],
+      "source_urls": [],
+      "event_urls": [
+        "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?fromDate=2026-12-01&toDate=2026-12-31"
+      ],
+      "event_domains": ["gdacs.org"],
+      "allowed_domains": [],
+      "close_at": "2026-11-25T09:00:00Z",
+      "resolution_deadline_at": "2027-01-05T00:00:00Z",
+      "challenge_window": 172800,
+      "resolution_mode": "metric",
+      "comparator": ">=",
+      "threshold": 3,
+      "metric_name": "number of orange or red disaster events affecting Indonesia",
+      "window_start_at": "2026-12-01T00:00:00Z",
+      "window_end_at": "2026-12-31T23:59:59Z",
+      "require_citation": true,
+      "measurement": {
+        "primary_source": 1,
+        "scale": 1,
+        "metric_source": "event",
+        "station": "not applicable, this market measures the GDACS global disaster registry",
+        "variable": "the number of qualifying disaster records",
+        "unit": "count",
+        "day_boundary": "the from and to dates of the record",
+        "missing_data": "the market is voided if the registry answers with nothing at all",
+        "match_terms": ["2026-12"],
+        "event": {
+          "publisher": "GDACS, the Joint Research Centre of the European Commission",
+          "area": "Indonesia",
+          "criteria": "a record counts when it lists Indonesia among the affected countries and when its alert level is orange or red",
+          "require_citation": true,
+          "match_terms": ["2026-12"],
+          "count_rules": {
+            "alertlevel": ["Orange", "Red"],
+            "affected_iso3": ["IDN"]
+          }
+        }
+      }
+    },
+    {
+      "id": "t2-gdacs-tropical-cyclone-indonesia-2026-12",
+      "shape": "metric",
+      "question": "Will GDACS record a tropical cyclone affecting Indonesia in December 2026?",
+      "criteria": "Count the records in the Global Disaster Alert and Coordination System that report a tropical cyclone and that list Indonesia among the countries they affected. Resolve Yes if the count is at least 1.",
+      "outcomes": ["Yes", "No"],
+      "source_urls": [],
+      "event_urls": [
+        "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?fromDate=2026-12-01&toDate=2026-12-31&eventType=TC"
+      ],
+      "event_domains": ["gdacs.org"],
+      "allowed_domains": [],
+      "close_at": "2026-11-25T09:00:00Z",
+      "resolution_deadline_at": "2027-01-05T00:00:00Z",
+      "challenge_window": 172800,
+      "resolution_mode": "metric",
+      "comparator": ">=",
+      "threshold": 1,
+      "metric_name": "number of tropical cyclone events affecting Indonesia",
+      "window_start_at": "2026-12-01T00:00:00Z",
+      "window_end_at": "2026-12-31T23:59:59Z",
+      "require_citation": true,
+      "measurement": {
+        "primary_source": 1,
+        "scale": 1,
+        "metric_source": "event",
+        "station": "not applicable, this market measures the GDACS global disaster registry",
+        "variable": "the number of qualifying disaster records",
+        "unit": "count",
+        "day_boundary": "the from and to dates of the record",
+        "missing_data": "the market is voided if the registry answers with nothing at all",
+        "match_terms": ["2026-12"],
+        "event": {
+          "publisher": "GDACS, the Joint Research Centre of the European Commission",
+          "area": "Indonesia",
+          "criteria": "a record counts when it is a tropical cyclone and when it lists Indonesia among the affected countries",
+          "require_citation": true,
+          "match_terms": ["2026-12"],
+          "count_rules": {
+            "eventtype": ["TC"],
+            "affected_iso3": ["IDN"]
+          }
+        }
+      }
+    },
+    {
+      "id": "t2-meteoalarm-orange-wind-poland-2026-12-14",
+      "shape": "metric",
+      "question": "Will MeteoAlarm record at least 3 areas in Poland with an orange wind warning on 14 December 2026?",
+      "criteria": "Count the entries in the MeteoAlarm feed for Poland whose event is a wind warning and whose severity is orange, counting each area once. Resolve Yes if the count is at least 3.",
+      "outcomes": ["Yes", "No"],
+      "source_urls": [],
+      "event_urls": [
+        "https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-poland"
+      ],
+      "event_domains": ["meteoalarm.org"],
+      "allowed_domains": [],
+      "close_at": "2026-12-13T09:00:00Z",
+      "resolution_deadline_at": "2026-12-16T18:00:00Z",
+      "challenge_window": 172800,
+      "resolution_mode": "metric",
+      "comparator": ">=",
+      "threshold": 3,
+      "metric_name": "number of areas with an orange wind warning",
+      "window_start_at": "2026-12-14T00:00:00Z",
+      "window_end_at": "2026-12-14T23:59:59Z",
+      "require_citation": true,
+      "measurement": {
+        "primary_source": 1,
+        "scale": 1,
+        "metric_source": "event",
+        "station": "not applicable, this market measures the MeteoAlarm alerting network",
+        "variable": "the number of qualifying warning entries",
+        "unit": "count",
+        "day_boundary": "the onset and expiry of the warning",
+        "missing_data": "the market is voided if the feed publishes nothing at all",
+        "match_terms": ["2026-12-14", "Wind"],
+        "event": {
+          "publisher": "MeteoAlarm, the European weather alerting network",
+          "area": "Poland",
+          "criteria": "an entry counts when its event is a wind warning and its severity is orange, and each area counts once",
+          "require_citation": true,
+          "match_terms": ["2026-12-14", "Wind", "Orange"]
+        }
+      }
+    },
+    {
+      "id": "t2-nws-warning-new-york-2026-12-14",
+      "shape": "choice",
+      "question": "Will the US National Weather Service have any watch, warning or advisory in force for New York State on 14 December 2026?",
+      "criteria": "Look for any alert in the National Weather Service feed that covers New York State and is in force on 14 December 2026. Resolve Yes if there is at least one, No if there is none.",
+      "outcomes": ["Yes", "No"],
+      "source_urls": [],
+      "event_urls": [
+        "https://api.weather.gov/alerts?start=2026-12-14T00:00:00Z&end=2026-12-14T23:59:59Z&area=NY"
+      ],
+      "event_domains": ["weather.gov"],
+      "allowed_domains": [],
+      "close_at": "2026-12-13T09:00:00Z",
+      "resolution_deadline_at": "2026-12-16T18:00:00Z",
+      "challenge_window": 172800,
+      "resolution_mode": "choice",
+      "comparator": ">=",
+      "threshold": 0,
+      "metric_name": "",
+      "window_start_at": "",
+      "window_end_at": "",
+      "require_citation": true,
+      "measurement": {
+        "primary_source": 1,
+        "scale": 1,
+        "metric_source": "event",
+        "station": "not applicable, this market measures the National Weather Service alert feed",
+        "variable": "the presence of a qualifying alert",
+        "unit": "count",
+        "day_boundary": "the effective and expiry times of the alert",
+        "missing_data": "the market is voided if the feed publishes nothing at all",
+        "match_terms": ["2026-12-14"],
+        "event": {
+          "publisher": "the US National Weather Service, api.weather.gov",
+          "area": "New York State",
+          "criteria": "any alert of any type that covers New York State and is in force on the day counts",
+          "require_citation": true,
+          "match_terms": ["2026-12-14"]
+        }
+      }
+    }
+  ]
+}

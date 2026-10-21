@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# frontend
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# genlayer test artifacts
+artifacts/
+.gltest_cache/
+
+# local secrets
+.env
+.env.*
+!.env.example

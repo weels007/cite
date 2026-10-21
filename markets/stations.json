@@ -1,0 +1,971 @@
+{
+  "$comment": "Global station registry for Cite weather markets. Every GHCN id was taken from the official NOAA inventory (ghcnd-stations.txt) and every coordinate was verified against the Open-Meteo archive API. `observed` holds the ERA5 daily maximum temperatures for 2026-10-10..2026-10-14 as a calibration reference; `seed_threshold_tenths` is a starting value that must be recalibrated against 30 year normals before a market goes live.",
+  "version": 1,
+  "cities": [
+    {
+      "city": "Jakarta",
+      "country": "ID",
+      "country_name": "Indonesia",
+      "canonical_station": {
+        "ghcn_id": "ID000096745",
+        "name": "JAKARTA/OBSERVATORY",
+        "lat": -6.183,
+        "lon": 106.833,
+        "elevation_m": 8.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "IDM00096741",
+          "name": "JAKARTA/TANJUNG PRIOK",
+          "lat": -6.1,
+          "lon": 106.867,
+          "elevation_m": 2.0
+        },
+        {
+          "ghcn_id": "IDM00096749",
+          "name": "SOEKARNO HATTA INTL",
+          "lat": -6.126,
+          "lon": 106.656,
+          "elevation_m": 10.4
+        }
+      ],
+      "reanalysis": {
+        "lat": -6.125,
+        "lon": 106.655,
+        "timezone": "Asia/Jakarta"
+      },
+      "observed": [
+        33.4,
+        33.4,
+        32.4,
+        34.2,
+        34.6
+      ],
+      "seed_threshold_tenths": 310,
+      "language": "id",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 305,
+        "p25_tenths": 296,
+        "p75_tenths": 315,
+        "seed_threshold_tenths": 310,
+        "chain_threshold_tenths": 310
+      }
+    },
+    {
+      "city": "New York",
+      "country": "US",
+      "country_name": "United States",
+      "canonical_station": {
+        "ghcn_id": "USW00094728",
+        "name": "CENTRAL PARK",
+        "lat": 40.7794,
+        "lon": -73.9692,
+        "elevation_m": 2.5
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": 40.7794,
+        "lon": -73.9692,
+        "timezone": "America/New_York"
+      },
+      "observed": [
+        20.5,
+        15.1,
+        21.7,
+        21.2,
+        24.7
+      ],
+      "seed_threshold_tenths": 81,
+      "language": "en",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 65,
+        "p25_tenths": 34,
+        "p75_tenths": 98,
+        "seed_threshold_tenths": 81,
+        "chain_threshold_tenths": 81
+      }
+    },
+    {
+      "city": "Tokyo",
+      "country": "JP",
+      "country_name": "Japan",
+      "canonical_station": {
+        "ghcn_id": "JA000047662",
+        "name": "TOKYO",
+        "lat": 35.683,
+        "lon": 139.767,
+        "elevation_m": 36.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "JAW00043311",
+          "name": "TOKYO",
+          "lat": 35.55,
+          "lon": 139.7667,
+          "elevation_m": 3.0
+        }
+      ],
+      "reanalysis": {
+        "lat": 35.683,
+        "lon": 139.767,
+        "timezone": "Asia/Tokyo"
+      },
+      "observed": [
+        25.2,
+        27.0,
+        25.3,
+        25.4,
+        26.4
+      ],
+      "seed_threshold_tenths": 133,
+      "language": "ja",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 121,
+        "p25_tenths": 97,
+        "p75_tenths": 145,
+        "seed_threshold_tenths": 133,
+        "chain_threshold_tenths": 133
+      }
+    },
+    {
+      "city": "London",
+      "country": "GB",
+      "country_name": "United Kingdom",
+      "canonical_station": {
+        "ghcn_id": "UKM00003772",
+        "name": "HEATHROW",
+        "lat": 51.478,
+        "lon": -0.461,
+        "elevation_m": 25.3
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "UKE00107650",
+          "name": "HEATHROW",
+          "lat": 51.4789,
+          "lon": 0.4489,
+          "elevation_m": 25.0
+        }
+      ],
+      "reanalysis": {
+        "lat": 51.478,
+        "lon": -0.461,
+        "timezone": "Europe/London"
+      },
+      "observed": [
+        14.8,
+        15.3,
+        17.4,
+        19.5,
+        18.7
+      ],
+      "seed_threshold_tenths": 100,
+      "language": "en",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 88,
+        "p25_tenths": 70,
+        "p75_tenths": 113,
+        "seed_threshold_tenths": 100,
+        "chain_threshold_tenths": 100
+      }
+    },
+    {
+      "city": "Berlin",
+      "country": "DE",
+      "country_name": "Germany",
+      "canonical_station": {
+        "ghcn_id": "GM000003319",
+        "name": "BERLIN-DAHLEM",
+        "lat": 52.4639,
+        "lon": 13.3017,
+        "elevation_m": 51.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "GME00111445",
+          "name": "BERLIN-TEMPELHOF",
+          "lat": 52.4683,
+          "lon": 13.4039,
+          "elevation_m": 48.0
+        },
+        {
+          "ghcn_id": "GME00121150",
+          "name": "BERLIN-TEGEL",
+          "lat": 52.5656,
+          "lon": 13.3106,
+          "elevation_m": 36.0
+        }
+      ],
+      "reanalysis": {
+        "lat": 52.4639,
+        "lon": 13.3017,
+        "timezone": "Europe/Berlin"
+      },
+      "observed": [
+        16.1,
+        12.5,
+        13.3,
+        15.3,
+        15.4
+      ],
+      "seed_threshold_tenths": 63,
+      "language": "de",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 51,
+        "p25_tenths": 26,
+        "p75_tenths": 76,
+        "seed_threshold_tenths": 63,
+        "chain_threshold_tenths": 63
+      }
+    },
+    {
+      "city": "Cairo",
+      "country": "EG",
+      "country_name": "Egypt",
+      "canonical_station": {
+        "ghcn_id": "EGE00147727",
+        "name": "CAIRO ABBASSIA",
+        "lat": 30.08,
+        "lon": 31.29,
+        "elevation_m": 30.0
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": 30.08,
+        "lon": 31.29,
+        "timezone": "Africa/Cairo"
+      },
+      "observed": [
+        30.0,
+        28.7,
+        30.0,
+        30.0,
+        32.5
+      ],
+      "seed_threshold_tenths": 230,
+      "language": "ar",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 222,
+        "p25_tenths": 209,
+        "p75_tenths": 238,
+        "seed_threshold_tenths": 230,
+        "chain_threshold_tenths": 230
+      }
+    },
+    {
+      "city": "Nairobi",
+      "country": "KE",
+      "country_name": "Kenya",
+      "canonical_station": {
+        "ghcn_id": "KEM00063741",
+        "name": "NAIROBI/DAGORETTI",
+        "lat": -1.3,
+        "lon": 36.75,
+        "elevation_m": 798.0
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": -1.3,
+        "lon": 36.75,
+        "timezone": "Africa/Nairobi"
+      },
+      "observed": [
+        22.7,
+        23.8,
+        24.9,
+        26.9,
+        27.0
+      ],
+      "seed_threshold_tenths": 238,
+      "language": "sw",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 232,
+        "p25_tenths": 224,
+        "p75_tenths": 243,
+        "seed_threshold_tenths": 238,
+        "chain_threshold_tenths": 238
+      }
+    },
+    {
+      "city": "Dubai",
+      "country": "AE",
+      "country_name": "United Arab Emirates",
+      "canonical_station": {
+        "ghcn_id": "AEM00041194",
+        "name": "DUBAI INTL",
+        "lat": 25.255,
+        "lon": 55.364,
+        "elevation_m": 10.4
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": 25.255,
+        "lon": 55.364,
+        "timezone": "Asia/Dubai"
+      },
+      "observed": [
+        38.3,
+        36.5,
+        35.8,
+        38.0,
+        36.4
+      ],
+      "seed_threshold_tenths": 275,
+      "language": "ar",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 269,
+        "p25_tenths": 257,
+        "p75_tenths": 281,
+        "seed_threshold_tenths": 275,
+        "chain_threshold_tenths": 275
+      }
+    },
+    {
+      "city": "Moscow",
+      "country": "RU",
+      "country_name": "Russia",
+      "canonical_station": {
+        "ghcn_id": "RSM00027612",
+        "name": "MOSCOW",
+        "lat": 55.8331,
+        "lon": 37.6167,
+        "elevation_m": 156.0
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": 55.8331,
+        "lon": 37.6167,
+        "timezone": "Europe/Moscow"
+      },
+      "observed": [
+        11.4,
+        14.1,
+        16.4,
+        12.0,
+        10.2
+      ],
+      "seed_threshold_tenths": 0,
+      "language": "ru",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": -22,
+        "p25_tenths": -47,
+        "p75_tenths": 11,
+        "seed_threshold_tenths": -5,
+        "chain_threshold_tenths": 0
+      }
+    },
+    {
+      "city": "Seoul",
+      "country": "KR",
+      "country_name": "South Korea",
+      "canonical_station": {
+        "ghcn_id": "KSM00047108",
+        "name": "SEOUL CITY",
+        "lat": 37.567,
+        "lon": 126.967,
+        "elevation_m": 87.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "KSW00043201",
+          "name": "SEOUL ROK K-14",
+          "lat": 37.55,
+          "lon": 126.8,
+          "elevation_m": 20.1
+        }
+      ],
+      "reanalysis": {
+        "lat": 37.567,
+        "lon": 126.967,
+        "timezone": "Asia/Seoul"
+      },
+      "observed": [
+        26.5,
+        29.3,
+        28.9,
+        21.2,
+        18.2
+      ],
+      "seed_threshold_tenths": 53,
+      "language": "ko",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 38,
+        "p25_tenths": 8,
+        "p75_tenths": 68,
+        "seed_threshold_tenths": 53,
+        "chain_threshold_tenths": 53
+      }
+    },
+    {
+      "city": "Singapore",
+      "country": "SG",
+      "country_name": "Singapore",
+      "canonical_station": {
+        "ghcn_id": "SNM00048698",
+        "name": "SINGAPORE CHANGI INTL",
+        "lat": 1.35,
+        "lon": 103.994,
+        "elevation_m": 6.7
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": 1.3521,
+        "lon": 103.8198,
+        "timezone": "Asia/Singapore"
+      },
+      "observed": [
+        32.5,
+        32.7,
+        32.8,
+        32.4,
+        33.0
+      ],
+      "seed_threshold_tenths": 298,
+      "language": "en",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 294,
+        "p25_tenths": 285,
+        "p75_tenths": 302,
+        "seed_threshold_tenths": 298,
+        "chain_threshold_tenths": 298
+      }
+    },
+    {
+      "city": "Sydney",
+      "country": "AU",
+      "country_name": "Australia",
+      "canonical_station": {
+        "ghcn_id": "ASN00066037",
+        "name": "SYDNEY AIRPORT AMO",
+        "lat": -33.9465,
+        "lon": 151.1731,
+        "elevation_m": 6.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "ASN00066006",
+          "name": "SYDNEY BOTANIC GARDENS",
+          "lat": -33.8662,
+          "lon": 151.216,
+          "elevation_m": 15.0
+        }
+      ],
+      "reanalysis": {
+        "lat": -33.9465,
+        "lon": 151.1731,
+        "timezone": "Australia/Sydney"
+      },
+      "observed": [
+        27.0,
+        24.8,
+        34.8,
+        25.3,
+        16.6
+      ],
+      "seed_threshold_tenths": 273,
+      "language": "en",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 260,
+        "p25_tenths": 226,
+        "p75_tenths": 285,
+        "seed_threshold_tenths": 273,
+        "chain_threshold_tenths": 273
+      }
+    },
+    {
+      "city": "Mumbai",
+      "country": "IN",
+      "country_name": "India",
+      "canonical_station": {
+        "ghcn_id": "IN012070300",
+        "name": "BOMBAY (COLABA) OBSY SR",
+        "lat": 18.9,
+        "lon": 72.82,
+        "elevation_m": 11.0
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": 18.9,
+        "lon": 72.82,
+        "timezone": "Asia/Kolkata"
+      },
+      "observed": [
+        32.5,
+        32.4,
+        32.9,
+        32.9,
+        32.3
+      ],
+      "seed_threshold_tenths": 311,
+      "language": "hi",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 303,
+        "p25_tenths": 290,
+        "p75_tenths": 319,
+        "seed_threshold_tenths": 311,
+        "chain_threshold_tenths": 311
+      }
+    },
+    {
+      "city": "Delhi",
+      "country": "IN",
+      "country_name": "India",
+      "canonical_station": {
+        "ghcn_id": "IN022021900",
+        "name": "NEW DELHI/SAFDARJUN",
+        "lat": 28.583,
+        "lon": 77.2,
+        "elevation_m": 216.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "IN022023000",
+          "name": "NEW DELHI/PALAM",
+          "lat": 28.567,
+          "lon": 77.117,
+          "elevation_m": 233.0
+        },
+        {
+          "ghcn_id": "IN022021600",
+          "name": "DELHI SADAR",
+          "lat": 28.63,
+          "lon": 77.25,
+          "elevation_m": 220.0
+        }
+      ],
+      "reanalysis": {
+        "lat": 28.61,
+        "lon": 77.21,
+        "timezone": "Asia/Kolkata"
+      },
+      "observed": [
+        33.2,
+        29.8,
+        29.0,
+        31.1,
+        32.1
+      ],
+      "seed_threshold_tenths": 233,
+      "language": "hi",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 224,
+        "p25_tenths": 209,
+        "p75_tenths": 241,
+        "seed_threshold_tenths": 233,
+        "chain_threshold_tenths": 233
+      }
+    },
+    {
+      "city": "Sao Paulo",
+      "country": "BR",
+      "country_name": "Brazil",
+      "canonical_station": {
+        "ghcn_id": "BR00E3-0350",
+        "name": "OBSERVATORIO DO IAG",
+        "lat": -23.65,
+        "lon": -46.63,
+        "elevation_m": 780.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "BR00E3-0520",
+          "name": "SAO PAULO (AEROPORT",
+          "lat": -23.617,
+          "lon": -46.65,
+          "elevation_m": 802.0
+        }
+      ],
+      "reanalysis": {
+        "lat": -23.55,
+        "lon": -46.63,
+        "timezone": "America/Sao_Paulo"
+      },
+      "observed": [
+        29.0,
+        25.5,
+        24.8,
+        23.5,
+        27.3
+      ],
+      "seed_threshold_tenths": 281,
+      "language": "pt",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 269,
+        "p25_tenths": 247,
+        "p75_tenths": 293,
+        "seed_threshold_tenths": 281,
+        "chain_threshold_tenths": 281
+      }
+    },
+    {
+      "city": "Mexico City",
+      "country": "MX",
+      "country_name": "Mexico",
+      "canonical_station": {
+        "ghcn_id": "MXM00076680",
+        "name": "MEXICO CITY",
+        "lat": 19.4,
+        "lon": -99.183,
+        "elevation_m": 303.0
+      },
+      "alternative_stations": [],
+      "reanalysis": {
+        "lat": 19.4,
+        "lon": -99.183,
+        "timezone": "America/Mexico_City"
+      },
+      "observed": [
+        21.1,
+        20.7,
+        22.5,
+        22.8,
+        22.9
+      ],
+      "seed_threshold_tenths": 220,
+      "language": "es",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 214,
+        "p25_tenths": 203,
+        "p75_tenths": 226,
+        "seed_threshold_tenths": 220,
+        "chain_threshold_tenths": 220
+      }
+    },
+    {
+      "city": "Toronto",
+      "country": "CA",
+      "country_name": "Canada",
+      "canonical_station": {
+        "ghcn_id": "CAN06158350",
+        "name": "TORONTO",
+        "lat": 43.6667,
+        "lon": -79.4,
+        "elevation_m": 112.5
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "CAN01108395",
+          "name": "VANCOUVER INTL A",
+          "lat": 49.1947,
+          "lon": -123.1839,
+          "elevation_m": 4.3
+        }
+      ],
+      "reanalysis": {
+        "lat": 43.6667,
+        "lon": -79.4,
+        "timezone": "America/Toronto"
+      },
+      "observed": [
+        14.9,
+        16.6,
+        21.5,
+        25.6,
+        18.3
+      ],
+      "seed_threshold_tenths": 41,
+      "language": "en",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 27,
+        "p25_tenths": 2,
+        "p75_tenths": 55,
+        "seed_threshold_tenths": 41,
+        "chain_threshold_tenths": 41
+      }
+    },
+    {
+      "city": "Santiago",
+      "country": "CL",
+      "country_name": "Chile",
+      "canonical_station": {
+        "ghcn_id": "CIM00085577",
+        "name": "QUINTA NORMAL",
+        "lat": -33.433,
+        "lon": -70.683,
+        "elevation_m": 520.0
+      },
+      "alternative_stations": [
+        {
+          "ghcn_id": "CIM00085574",
+          "name": "ARTURO MERINO BENITEZ INTL",
+          "lat": -33.393,
+          "lon": -70.786,
+          "elevation_m": 474.0
+        }
+      ],
+      "reanalysis": {
+        "lat": -33.45,
+        "lon": -70.67,
+        "timezone": "America/Santiago"
+      },
+      "observed": [
+        21.9,
+        20.1,
+        15.3,
+        17.3,
+        19.5
+      ],
+      "seed_threshold_tenths": 292,
+      "language": "es",
+      "calibration": {
+        "window": "12/01 to 12/20",
+        "years": [
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        "samples": 200,
+        "mean_tenths": 282,
+        "p25_tenths": 266,
+        "p75_tenths": 301,
+        "seed_threshold_tenths": 292,
+        "chain_threshold_tenths": 292
+      }
+    }
+  ]
+}

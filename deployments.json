@@ -1,0 +1,67 @@
+{
+  "$comment": "Cite runs on a single contract. This file records that contract and the demo markets that were resolved on it.",
+  "project": "Cite",
+  "network": "studionet",
+  "chain_id": 61999,
+  "rpc": "https://studio.genlayer.com/api",
+  "explorer": "https://explorer-studio.genlayer.com",
+  "contract": {
+    "name": "Cite",
+    "address": "0xeA384Ef9a0d8F87314ddb40d58F0183e69E0707b",
+    "deployed_at": "2026-10-21",
+    "validators": 5,
+    "wallets": {
+      "policy": "Every wallet lives in D:\\Genlayer-project\\weels\\wallet and is read from there. The GenLayer CLI store holds no copy of any key from this project.",
+      "project_wallet": {
+        "name": "cite",
+        "address": "0x64242331ce733309971B164ed4007be3Da2bDe8B",
+        "source": "D:\\Genlayer-project\\weels\\wallet\\cite-keystore.json",
+        "note": "The project's own wallet, created for the next deployment."
+      },
+      "creator": {
+        "name": "tester1",
+        "address": "0xE8b3e800d08727D25156a44cD1609F793bd0Af5a",
+        "source": "D:\\Genlayer-project\\weels\\wallet\\tester1-keystore.json",
+        "note": "Owner of the contract, so it is the only account that can withdraw fees or sweep stranded value."
+      },
+      "bettor": {
+        "name": "tester2",
+        "address": "0x0C0Fd005478Cef9219451BBD19Dfc6C0586fC1Ad",
+        "source": "D:\\Genlayer-project\\weels\\wallet\\tester2-keystore.json"
+      }
+    },
+    "committee": "The validators that voted are run by the network: gpt-5.4, claude-sonnet-4.6, gemini-3-flash-preview, gpt-oss-120b, grok, qwen and glm, with three agreeing on every round.",
+    "demo_markets": [
+      {
+        "name": "tier1-jakarta-temperature",
+        "shape": "tier 1, metric",
+        "question": "Will the maximum temperature in Jakarta on 14 October 2026 be at least 33.0 degrees Celsius?",
+        "result": "resolved, Yes",
+        "note": "ERA5 said 34.6 C and NASA POWER said 31.6 C. The committee reported the divergence and applied the locked authoritative source."
+      },
+      {
+        "name": "tier2-nws-alerts-new-york",
+        "shape": "tier 2, metric counted from the event feed",
+        "question": "Will the US National Weather Service have at least one alert in force for New York State on 14 October 2026?",
+        "result": "resolved, Yes"
+      },
+      {
+        "name": "tier2-nyc-hot-and-warning",
+        "shape": "tier 2, two stages",
+        "question": "Will New York reach 20.0 degrees Celsius on 14 October 2026 and have a warning in force that day?",
+        "result": "resolved, Yes",
+        "note": "The temperature came from the measurement source and the warning from the event source, and both had to hold."
+      },
+      {
+        "name": "tier2-gdacs-disasters-australia",
+        "shape": "tier 2, counted by the contract",
+        "question": "Will GDACS record at least one orange or red disaster event affecting Australia between 1 and 20 October 2026?",
+        "result": "resolved, No",
+        "note": "The model reported ninety nine, the contract counted the qualifying records itself and the market settled on the contract's number."
+      }
+    ],
+    "accounting": {
+      "note": "A value transfer leaves the contract only when its child transaction is activated, so the strict reconciliation only holds once nothing is in flight. `covered` is the property that holds at every point in time."
+    }
+  }
+}

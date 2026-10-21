@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* The palette of a printed weather chart: ink, paper, one sodium accent. */
+    --background: 220 24% 5%;
+    --foreground: 40 18% 89%;
+    --card: 218 25% 7%;
+    --card-foreground: 40 18% 89%;
+    --popover: 218 25% 7%;
+    --popover-foreground: 40 18% 89%;
+    --primary: 36 71% 62%;
+    --primary-foreground: 220 24% 7%;
+    --secondary: 216 18% 14%;
+    --secondary-foreground: 40 18% 89%;
+    --muted: 216 18% 14%;
+    --muted-foreground: 208 14% 52%;
+    --accent: 36 71% 62%;
+    --accent-foreground: 220 24% 7%;
+    --destructive: 4 62% 46%;
+    --destructive-foreground: 40 18% 96%;
+    --border: 214 18% 17%;
+    --input: 214 18% 17%;
+    --ring: 36 71% 62%;
+    --radius: 0.6rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(224, 164, 88, 0.28);
+  color: #f6f3ec;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@layer components {
+  /* Chart annotation panels: square, hairline, one accent rule. */
+  .chart-card {
+    @apply relative rounded-lg border border-white/[0.08] bg-[#0B0F16]/85 backdrop-blur-md;
+    transition:
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+
+  .chart-card:hover {
+    @apply border-white/[0.16] bg-[#0D1219]/90;
+  }
+
+  .label-mono {
+    @apply font-mono text-[10px] uppercase tracking-[0.22em] text-slate-500;
+  }
+
+  .rule-accent {
+    @apply absolute left-0 top-0 h-px w-10 bg-[#E0A458]/70;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
