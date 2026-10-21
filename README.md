@@ -344,8 +344,8 @@ it goes up as it is.
 | setting | value |
 |---|---|
 | root directory | `frontend` |
-| framework preset | Next.js |
-| build command | `npm run build` (the default) |
+| framework preset | Next.js (pinned in `frontend/vercel.json`) |
+| build command | `npm run build` |
 | output | the default `.next` output |
 
 Three environment variables, all public by nature, set on the project:
@@ -355,6 +355,22 @@ Three environment variables, all public by nature, set on the project:
 | `NEXT_PUBLIC_CONTRACT_ADDRESS` | `0xeA384Ef9a0d8F87314ddb40d58F0183e69E0707b` |
 | `NEXT_PUBLIC_RPC_URL` | `https://studio.genlayer.com/api` |
 | `NEXT_PUBLIC_CHAIN_ID` | `61999` |
+
+They have to be set for **Production and Preview**, because a
+`NEXT_PUBLIC_` variable is written into the bundle at build time. A build
+without them still succeeds, but the pages have no contract to read and stay
+empty, so the variables are set before the first deploy, not after.
+
+From the command line, after `vercel login`:
+
+```bash
+cd frontend
+vercel link                                   # pick the project, root = frontend
+vercel env add NEXT_PUBLIC_CONTRACT_ADDRESS production
+vercel env add NEXT_PUBLIC_RPC_URL production
+vercel env add NEXT_PUBLIC_CHAIN_ID production
+vercel --prod
+```
 
 The chain id is read from the environment rather than hard coded, so the same
 build can be pointed at a local network, which is what the integration tests
