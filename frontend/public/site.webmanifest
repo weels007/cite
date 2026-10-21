@@ -1,0 +1,17 @@
+{
+  "name": "Cite - prediction markets settled by evidence",
+  "short_name": "Cite",
+  "description": "Weather prediction markets on GenLayer. Every settlement cites the web, and the contract verifies that the quote is really there.",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#0A0C11",
+  "background_color": "#0A0C11",
+  "display": "standalone",
+  "start_url": "/"
+}
