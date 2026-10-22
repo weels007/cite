@@ -1,12 +1,13 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { Loader2, TriangleAlert } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
+  challenge,
   claim,
   claimRefund,
   confirmPayout,
@@ -24,6 +25,7 @@ export interface BetPanelProps {
   outcomes: string[]
   totalStaked: number
   hasPosition?: boolean
+  challengeDeadlineTs?: number
 }
 
 const AMOUNTS = [1, 10, 100]
@@ -35,11 +37,18 @@ export function BetPanel({
   outcomes,
   totalStaked,
   hasPosition = false,
+  challengeDeadlineTs = 0,
 }: BetPanelProps) {
   const { address, provider, connectWallet } = useWallet()
   const router = useRouter()
   const [amount, setAmount] = useState(10)
+  const [evidenceUrl, setEvidenceUrl] = useState("")
   const [busy, setBusy] = useState<string | null>(null)
+  const [now, setNow] = useState<number | null>(null)
+
+  useEffect(() => {
+    setNow(Date.now())
+  }, [])
 
   async function run(label: string, action: () => Promise<string>) {
     if (!address || !provider) {
@@ -90,6 +99,8 @@ export function BetPanel({
   const isOpen = status === "open"
   const isSettled = status === "resolved" || status === "settled"
   const isVoided = status === "voided"
+  const challengeOpen =
+    isSettled && now !== null && now / 1000 < challengeDeadlineTs
 
   return (
     <div className="chart-card p-5">
@@ -185,6 +196,46 @@ export function BetPanel({
             arrive, the obligation stays open and can be claimed again.
           </p>
         </>
+      )}
+
+      {isSettled && challengeOpen && (
+        <div className="mt-4 rounded-lg border border-amber-400/30 bg-amber-400/5 p-4">
+          <p className="mb-2 flex items-start gap-2 text-sm text-slate-300">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-amber-400" />
+            The settlement is final once the challenge window closes. You can
+            dispute it now with a bond of 0.1 GEN.
+          </p>
+          <input
+            value={evidenceUrl}
+            onChange={(event) => setEvidenceUrl(event.target.value)}
+            placeholder="https://the contradicting evidence"
+            className="mb-3 w-full rounded-lg border border-white/10 bg-[#0B0F16] px-3 py-2 font-mono text-xs text-slate-200 outline-none placeholder:text-slate-600 focus:border-amber-400/40"
+          />
+          <Button
+            className="w-full rounded-lg bg-gradient-to-r from-amber-500 to-orange-400 font-semibold text-slate-950 hover:opacity-90"
+            disabled={busy !== null || !evidenceUrl.trim()}
+            onClick={() =>
+              run("Challenge", () =>
+                challenge(
+                  address as `0x${string}`,
+                  provider,
+                  marketId,
+                  evidenceUrl.trim()
+                )
+              )
+            }
+          >
+            {busy === "Challenge" ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              "Challenge the settlement"
+            )}
+          </Button>
+          <p className="mt-2 text-[11px] leading-relaxed text-slate-600">
+            A successful dispute voids the market and refunds everybody. The
+            bond is returned when the challenge succeeds.
+          </p>
+        </div>
       )}
 
       {isVoided && (

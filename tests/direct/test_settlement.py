@@ -44,6 +44,7 @@ def test_the_winning_pool_is_paid_out_exactly(
     market_id = _resolved_market(
         contract, direct_vm, direct_alice, direct_bob, direct_charlie, direct_accounts[0]
     )
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     bob_payout = int(contract.claim(market_id))
@@ -69,6 +70,10 @@ def test_the_payout_does_not_depend_on_the_claim_order(
         contract, direct_vm, direct_alice, direct_bob, direct_charlie, direct_accounts[0]
     )
 
+    # The settlement is final once the challenge window is over, so the
+    # payout obligations can be created.
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
+
     # Charlie claims first this time.
     direct_vm.sender = direct_charlie
     charlie_payout = int(contract.claim(market_id))
@@ -87,6 +92,8 @@ def test_a_position_cannot_be_claimed_twice(
     market_id = _resolved_market(
         contract, direct_vm, direct_alice, direct_bob, direct_charlie, direct_accounts[0]
     )
+
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     contract.claim(market_id)
@@ -125,6 +132,27 @@ def test_claim_is_rejected_before_the_market_is_resolved(
     bet(contract, direct_vm, direct_bob, market_id, 0, 100 * GEN)
 
     with direct_vm.expect_revert("has not been resolved"):
+        contract.claim(market_id)
+
+
+def test_a_claim_during_the_challenge_window_is_refused(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    contract = deploy(direct_deploy)
+    direct_vm.sender = direct_alice
+    market_id = create_market(contract)
+    bet(contract, direct_vm, direct_bob, market_id, 0, 100 * GEN)
+
+    warp_to(direct_vm, int(contract.get_market(market_id)["close_ts"]) + 60)
+    mock_sources(direct_vm)
+    mock_resolution_llm(direct_vm, outcome_index=0)
+    direct_vm.sender = direct_charlie
+    contract.resolve_market(market_id)
+
+    # The settlement is not final until the challenge window is over, so no
+    # payout obligation may be created before that.
+    direct_vm.sender = direct_bob
+    with direct_vm.expect_revert("the market is still in its challenge window"):
         contract.claim(market_id)
 
 
@@ -327,6 +355,10 @@ def test_the_accounting_invariant_holds_after_a_full_settlement(
     assert accounting["contract_balance"] == 1000 * GEN
     assert accounting["expected_balance"] == 1000 * GEN
     assert accounting["invariant_holds"] is True
+
+    # The settlement is final once the challenge window is over, so the
+    # payout obligations can be created.
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     contract.claim(market_id)

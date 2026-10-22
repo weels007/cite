@@ -374,6 +374,23 @@ export async function resolveMarket(
   return hash
 }
 
+export async function challenge(
+  walletAddress: `0x${string}`,
+  provider: any,
+  marketId: number,
+  evidenceUrl: string
+): Promise<string> {
+  const client = getWriteClient(walletAddress, provider)
+  const hash = await client.writeContract({
+    address: address(),
+    functionName: "challenge_market",
+    args: [marketId, evidenceUrl],
+    value: gen(0.1),
+  })
+  invalidate()
+  return hash
+}
+
 /** The GEN amount, as the contract counts it. */
 /** How the number behind a settlement was arrived at. */
 export function describeMetric(market: Market) {

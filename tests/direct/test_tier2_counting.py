@@ -231,3 +231,52 @@ def test_a_market_without_count_rules_leaves_the_number_to_the_model(
 
     # Without the rules the model is the one that counts.
     assert result["leader_reading"]["metric"] == 7
+
+
+def test_a_count_rule_settlement_cannot_resolve_without_verified_citations(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    """The contract counts, but a settlement has to be backed by a citation."""
+    contract = deploy(direct_deploy)
+    market_id = _market(contract, direct_vm, direct_alice, direct_bob)
+
+    _mock_registry(direct_vm)
+    direct_vm.mock_llm(
+        r"Decide which outcome of the market is true|Answer the market question",
+        json.dumps(
+            {
+                "resolved": True,
+                "metric": 99,
+                "confidence": 90,
+                "reasoning": "The registry lists the matching records.",
+                "citations": [],
+                "uncited": True,
+            }
+        ),
+    )
+
+    direct_vm.sender = direct_charlie
+    result = contract.resolve_market(market_id)
+
+    # The contract counted the records itself, but the settlement still has
+    # to clear the citation check before it may resolve.
+    assert result["consensus"]["resolved"] is False
+    assert contract.get_market(market_id)["status"] == "voided"
+
+
+def test_an_event_citation_keeps_the_event_source_url(
+    direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie
+):
+    contract = deploy(direct_deploy)
+    market_id = _market(contract, direct_vm, direct_alice, direct_bob)
+
+    _mock_registry(direct_vm)
+    _mock_model(direct_vm, count_wrong=99)
+
+    direct_vm.sender = direct_charlie
+    result = contract.resolve_market(market_id)
+    assert result["consensus"]["resolved"] is True
+
+    trail = contract.get_citations(market_id)
+    assert trail["trail"][0]["source_index"] == 1
+    assert trail["trail"][0]["url"] == GDACS_URL

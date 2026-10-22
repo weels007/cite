@@ -95,6 +95,7 @@ def test_claiming_reserves_the_obligation_and_keeps_it_recoverable(
     mock_metric_llm(direct_vm, metric=346)
     direct_vm.sender = direct_alice
     contract.resolve_market(market_id)
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     amount = int(contract.claim(market_id))
@@ -125,6 +126,7 @@ def test_claiming_again_retries_without_paying_twice(
     mock_metric_llm(direct_vm, metric=346)
     direct_vm.sender = direct_alice
     contract.resolve_market(market_id)
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     first = int(contract.claim(market_id))
@@ -160,6 +162,7 @@ def test_confirming_the_delivery_moves_the_obligation_to_paid(
     mock_metric_llm(direct_vm, metric=346)
     direct_vm.sender = direct_alice
     contract.resolve_market(market_id)
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     amount = int(contract.claim(market_id))
@@ -184,6 +187,7 @@ def test_a_delivery_cannot_be_confirmed_twice(
     mock_metric_llm(direct_vm, metric=346)
     direct_vm.sender = direct_alice
     contract.resolve_market(market_id)
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     contract.claim(market_id)
@@ -205,6 +209,7 @@ def test_a_claimed_position_cannot_be_claimed_again_after_confirmation(
     mock_metric_llm(direct_vm, metric=346)
     direct_vm.sender = direct_alice
     contract.resolve_market(market_id)
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     contract.claim(market_id)
@@ -227,6 +232,7 @@ def test_a_failed_transfer_returns_the_value_and_keeps_the_obligation(
     mock_metric_llm(direct_vm, metric=346)
     direct_vm.sender = direct_alice
     contract.resolve_market(market_id)
+    warp_to(direct_vm, int(contract.get_market(market_id)["challenge_deadline_ts"]) + 60)
 
     direct_vm.sender = direct_bob
     amount = int(contract.claim(market_id))

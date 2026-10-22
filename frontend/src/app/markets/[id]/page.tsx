@@ -366,6 +366,7 @@ export default async function MarketPage({
             outcome={market.outcome}
             outcomes={market.outcomes}
             totalStaked={market.total_staked}
+            challengeDeadlineTs={market.challenge_deadline_ts}
           />
 
           <div className="chart-card rounded-lg p-5">

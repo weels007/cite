@@ -1702,16 +1702,17 @@ class Cite(gl.Contract):
             if metric_mode and spec["metric_source"] == "event" and count_rules:
                 # The feed is structured, so the contract does the counting.
                 # The model cannot get the number wrong, it only has to quote
-                # the record it relied on.
-                counted = 0
-                for page in pages:
-                    if int(page[0]) <= measurement_count:
-                        continue
-                    counted += tool["count_features"](page[2], count_rules)
-                parsed["metric"] = counted
-                parsed["metric_counted_by"] = "contract"
-                parsed["outcome_index"] = derive_outcome(counted)
-                parsed["resolved"] = True
+                # the record it relied on. The settlement still has to clear
+                # the citation checks above before it may resolve.
+                if parsed["resolved"]:
+                    counted = 0
+                    for page in pages:
+                        if int(page[0]) <= measurement_count:
+                            continue
+                        counted += tool["count_features"](page[2], count_rules)
+                    parsed["metric"] = counted
+                    parsed["metric_counted_by"] = "contract"
+                    parsed["outcome_index"] = derive_outcome(counted)
             elif metric_mode and parsed["resolved"]:
                 parsed["outcome_index"] = derive_outcome(int(parsed["metric"]))
             parsed["verified_sources"] = len(pages)
@@ -2086,6 +2087,11 @@ class Cite(gl.Contract):
         if int(position.refunded):
             raise gl.vm.UserError(f"{ERROR_EXPECTED} the position was refunded")
 
+        # A payout obligation is created only once the challenge window is
+        # over and the settlement is final.
+        if _now_ts() <= int(market.challenge_deadline_ts):
+            raise gl.vm.UserError(f"{ERROR_EXPECTED} the market is still in its challenge window")
+
         if int(position.owed) > 0:
             # A retry of a delivery that did not arrive. It is only allowed
             # when a failure came after the last attempt, so the same money is
@@ -2316,13 +2322,22 @@ class Cite(gl.Contract):
         """
         market = self._market_or_fail(market_id)
         citations = _json_list(market.citations_json)
-        sources = json.loads(market.source_urls_json)
+        sources = _json_list(market.source_urls_json)
+        event_urls = _json_list(market.event_urls_json)
+        measurement_count = len(sources)
         trail: list = []
         for citation in citations:
             source_index = int(citation.get("source_index", 0))
             url = ""
-            if 1 <= source_index <= len(sources):
+            if 1 <= source_index <= measurement_count:
+                # Measurement sources come first, indexed from one.
                 url = sources[source_index - 1]
+            elif source_index > measurement_count:
+                # Event sources come after the measurement sources, so the
+                # event group is shifted by the measurement count.
+                event_offset = source_index - measurement_count - 1
+                if 0 <= event_offset < len(event_urls):
+                    url = event_urls[event_offset]
             trail.append(
                 {
                     "source_index": source_index,
