@@ -22,7 +22,7 @@ from wallet import DEFAULT_WALLET, load_account
 from genlayer_py import create_client, studionet
 
 WALLET_FOLDER = Path(r"D:\Genlayer-project\weels\wallet")
-CONTRACT = "0xeA384Ef9a0d8F87314ddb40d58F0183e69E0707b"
+CONTRACT = "0x00E02cD320768cd8E55ac7C786119F76BD7452BB"
 
 MARKET_IDS = [0, 1, 2]
 MARKET_NAMES = [

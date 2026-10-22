@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from genlayer_py import create_client, studionet
 from wallet import load_account
 
-CONTRACT = "0xeA384Ef9a0d8F87314ddb40d58F0183e69E0707b"
+CONTRACT = "0x00E02cD320768cd8E55ac7C786119F76BD7452BB"
 
 # A window in the past, so the registry really holds the records.
 WINDOW_FROM = "2026-10-01"
