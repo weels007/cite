@@ -73,7 +73,7 @@ passes `challenge_deadline_ts`.
 ## 7. Deploy and revision
 
 - Corrected source deployed to studionet.
-- New contract address: `0x00E02cD320768cd8E55ac7C786119F76BD7452BB`.
+- New contract address: `0xB0295bcBe44271D194Da693BFd6844022F413958`.
 - Updated `deployments.json`, `frontend/.env.local`, rebuilt frontend.
 - Committed and pushed: `4cad7286f049e385882d5f1f32433ad5d10d15cc`.
 

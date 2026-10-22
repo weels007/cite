@@ -23,7 +23,7 @@ from wallet import DEFAULT_WALLET, load_account
 from genlayer_py import create_client, studionet
 
 WALLET_FOLDER = Path(r"D:\Genlayer-project\weels\wallet")
-CONTRACT = "0x00E02cD320768cd8E55ac7C786119F76BD7452BB"
+CONTRACT = "0xB0295bcBe44271D194Da693BFd6844022F413958"
 
 EVENT_DATE = "2026-10-14"
 EVENT_COMPACT = "20261014"

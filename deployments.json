@@ -7,7 +7,7 @@
   "explorer": "https://explorer-studio.genlayer.com",
   "contract": {
     "name": "Cite",
-    "address": "0x00E02cD320768cd8E55ac7C786119F76BD7452BB",
+    "address": "0xB0295bcBe44271D194Da693BFd6844022F413958",
     "deployed_at": "2026-10-22",
     "validators": 5,
     "wallets": {
