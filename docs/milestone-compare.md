@@ -4,7 +4,7 @@ This document compares the accepted/submitted baseline with the current state of
 Cite so the milestone change is visible and verifiable.
 
 - **Baseline:** `514494b` — *Give the site a favicon* (pre-steward-fix state)
-- **Current:** `0ec54a2` — *Point the project at the tested contract 0xB0295bcBe44271D194Da693BFd6844022F413958*
+- **Current:** `0ec54a2` — *Point the project at the tested contract 0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA*
 - **Scope of change:** `514494b..HEAD` — 17 files changed, 276 insertions(+), 24 deletions(-)
 
 ## Milestone fit
@@ -28,7 +28,7 @@ This work is meaningful new progress, not a resubmission of the same project:
 | **Event citation URL** | Event citations were looked up in the measurement source list, producing wrong/empty URLs. | Event citations are offset by measurement count and resolved against `event_urls`. |
 | **Challenge action in app** | Challenge was visible in trail display but there was no frontend write action. | `challenge()` write action added; BetPanel exposes challenge UI when the challenge window is open; bond is 0.1 GEN. |
 | **Regression coverage** | No regression tests for these steward-reported paths. | Added regression tests for count-rule citation void, event citation URL, and claim-during-window refusal; updated affected payout tests to respect the window. |
-| **Deployed contract** | `0xeA384Ef9a0d8F87314ddb40d58F0183e69E0707b` (studionet, 2026-10-21) | `0xB0295bcBe44271D194Da693BFd6844022F413958` (studionet, corrected source, validated) |
+| **Deployed contract** | `0xeA384Ef9a0d8F87314ddb40d58F0183e69E0707b` (studionet, 2026-10-21) | `0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA` (studionet, corrected source, validated) |
 | **Frontend build** | Built against previous contract/config. | Rebuilt against the corrected/tested contract; `tsc --noEmit` and `next build` clean. |
 | **Submission evidence** | Steward request unresolved. | Steward fixes documented in `docs/steward-fixes.md` with code locations, tests, deployment, and corrected revision. |
 
@@ -69,7 +69,7 @@ This work is meaningful new progress, not a resubmission of the same project:
 |---|---|
 | `4cad728` | Steward fixes: citation guard, payout timing, event citation URLs, challenge action |
 | `bdf9dd4` | Point deployment records and docs at the corrected contract |
-| `0ec54a2` | Point the project at the tested contract `0xB0295bcBe44271D194Da693BFd6844022F413958` |
+| `0ec54a2` | Point the project at the tested contract `0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA` |
 
 ## How to verify
 
@@ -92,5 +92,5 @@ pytest tests/integration/test_cite.py -v -s
 ## Notes
 
 - The compare baseline is `514494b` because it is the last pre-steward-fix commit on `main`.
-- The new contract address `0xB0295bcBe44271D194Da693BFd6844022F413958` is the corrected/tested studionet deployment referenced by the project.
+- The new contract address `0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA` is the corrected/tested studionet deployment referenced by the project.
 - This milestone focuses on security, correctness, deployment, and verifiable test evidence; it does not claim external traction metrics.

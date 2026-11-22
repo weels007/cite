@@ -7,8 +7,8 @@
   "explorer": "https://explorer-studio.genlayer.com",
   "contract": {
     "name": "Cite",
-    "address": "0xB0295bcBe44271D194Da693BFd6844022F413958",
-    "deployed_at": "2026-10-22",
+    "address": "0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA",
+    "deployed_at": "2026-11-22",
     "validators": 5,
     "wallets": {
       "policy": "Every wallet lives in D:\\Genlayer-project\\weels\\wallet and is read from there. The GenLayer CLI store holds no copy of any key from this project.",

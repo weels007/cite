@@ -13,7 +13,7 @@ from wallet import DEFAULT_WALLET, load_account
 from genlayer_py import create_client, studionet
 
 WALLET_FOLDER = Path(r"D:\Genlayer-project\weels\wallet")
-CONTRACT = "0xB0295bcBe44271D194Da693BFd6844022F413958"
+CONTRACT = "0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA"
 NAMES = [
     "tier1-jakarta-temperature",
     "tier2-nws-alerts-new-york",

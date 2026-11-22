@@ -198,7 +198,7 @@ been resolved by the real validator committee, with real web pages and real
 LLM calls. `deployments.json` has the address and the full record.
 
 ```
-contract : 0xB0295bcBe44271D194Da693BFd6844022F413958   (studionet, chain 61999)
+contract : 0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA   (studionet, chain 61999)
 wallets  : tester1 (creator) / tester2 (bettor), read from
            D:\Genlayer-project\weels\wallet, which is never modified
 ```
@@ -352,7 +352,7 @@ Three environment variables, all public by nature, set on the project:
 
 | variable | value |
 |---|---|
-| `NEXT_PUBLIC_CONTRACT_ADDRESS` | `0xB0295bcBe44271D194Da693BFd6844022F413958` |
+| `NEXT_PUBLIC_CONTRACT_ADDRESS` | `0xFE10832281BB86994A7503D93AB6aC59DDFf4FeA` |
 | `NEXT_PUBLIC_RPC_URL` | `https://studio.genlayer.com/api` |
 | `NEXT_PUBLIC_CHAIN_ID` | `61999` |
 
